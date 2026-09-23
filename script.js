@@ -84,21 +84,63 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // =========================
-  // 4. BACK TO TOP BUTTON
+  // 4. BACK TO TOP BUTTON (Auto-vanish after 3s hold)
   // =========================
   const backToTop = document.getElementById("back-to-top");
   if (backToTop) {
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 400) {
+    let hideTimer = null;
+    let isHovering = false;
+
+    function handleScrollBackToTop() {
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+      // Only show when scrolled past hero section (> 350px)
+      if (currentScroll > 350) {
         backToTop.classList.add("show");
+
+        // Clear previous timer on any scroll movement
+        if (hideTimer) {
+          clearTimeout(hideTimer);
+        }
+
+        // Auto vanish after 3 seconds of holding still
+        hideTimer = setTimeout(function () {
+          if (!isHovering) {
+            backToTop.classList.remove("show");
+          }
+        }, 3000);
       } else {
+        // At the top of page, hide immediately
+        if (hideTimer) clearTimeout(hideTimer);
         backToTop.classList.remove("show");
       }
-    }, { passive: true });
+    }
+
+    window.addEventListener("scroll", handleScrollBackToTop, { passive: true });
+
+    // Prevent vanishing if user is hovering to click on desktop
+    backToTop.addEventListener("mouseenter", function () {
+      isHovering = true;
+      if (hideTimer) clearTimeout(hideTimer);
+      backToTop.classList.add("show");
+    });
+
+    backToTop.addEventListener("mouseleave", function () {
+      isHovering = false;
+      const currentScroll = window.scrollY || document.documentElement.scrollTop;
+      if (currentScroll > 350) {
+        if (hideTimer) clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          backToTop.classList.remove("show");
+        }, 3000);
+      }
+    });
 
     backToTop.addEventListener("click", function (e) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
+      if (hideTimer) clearTimeout(hideTimer);
+      backToTop.classList.remove("show");
     });
   }
 
@@ -136,9 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const typingTarget = document.getElementById("typing-text");
   if (typingTarget) {
     const words = [
-      "Graphic Designer",
       "Web Developer",
-      "Brand Identity Specialist",
+      "Graphic Designer",
       "UI/UX Designer"
     ];
     let wordIndex = 0;
@@ -373,3 +414,279 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// =============================================================
+// HERO AURORA BACKGROUND — Demo 1 effect (works on all devices)
+// =============================================================
+(function () {
+  const canvas = document.getElementById("hero-bg-canvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let W, H, particles = [];
+
+  // ── Reduce particle count on mobile for performance ──
+  const isMobile = () => window.innerWidth < 768;
+
+  function resize() {
+    const section = canvas.parentElement;
+    W = canvas.width  = section.offsetWidth;
+    H = canvas.height = section.offsetHeight;
+  }
+
+  // ── Floating Dust Particles ──
+  class Particle {
+    constructor() { this.reset(true); }
+    reset(init) {
+      this.x     = Math.random() * W;
+      this.y     = init ? Math.random() * H : H + 10;
+      this.r     = Math.random() * 1.5 + 0.4;
+      this.speed = Math.random() * 0.45 + 0.15;
+      this.alpha = Math.random() * 0.55 + 0.2;
+      this.hue   = Math.random() < 0.6 ? 74 : 190; // lime-yellow or cyan
+      this.drift = (Math.random() - 0.5) * 0.35;
+    }
+    update() {
+      this.y -= this.speed;
+      this.x += this.drift;
+      if (this.y < -10) this.reset(false);
+    }
+    draw() {
+      ctx.save();
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle   = `hsl(${this.hue}, 100%, 70%)`;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    // Mobile: fewer particles to keep 60fps
+    const count = isMobile()
+      ? Math.min(60,  Math.floor((W * H) / 14000))
+      : Math.min(180, Math.floor((W * H) / 7000));
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+
+  // ── Aurora Orbs ──
+  const orbs = [
+    { ox: 0.15, oy: 0.35, r: 0.55, hue: 74,  speed: 0.00022, phase: 0 },
+    { ox: 0.78, oy: 0.55, r: 0.50, hue: 190, speed: 0.00018, phase: 2 },
+    { ox: 0.50, oy: 0.18, r: 0.44, hue: 74,  speed: 0.00015, phase: 4 },
+    { ox: 0.88, oy: 0.22, r: 0.36, hue: 265, speed: 0.00020, phase: 1 },
+  ];
+
+  function drawAurora(ts) {
+    for (const o of orbs) {
+      const cx  = (o.ox + Math.sin(ts * o.speed + o.phase) * 0.13) * W;
+      const cy  = (o.oy + Math.cos(ts * o.speed * 1.3 + o.phase) * 0.10) * H;
+      const rad = o.r * Math.min(W, H);
+      const g   = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      g.addColorStop(0,   `hsla(${o.hue}, 100%, 60%, 0.40)`);
+      g.addColorStop(0.5, `hsla(${o.hue},  95%, 50%, 0.14)`);
+      g.addColorStop(1,   `hsla(${o.hue},  80%, 35%, 0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, rad, rad * 0.65, ts * 0.0001, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function drawGrid() {
+    ctx.save();
+    ctx.strokeStyle = "rgba(255,255,255,0.045)";
+    ctx.lineWidth   = 1;
+    const step = isMobile() ? 60 : 80;
+    for (let x = 0; x <= W; x += step) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = 0; y <= H; y += step) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+    ctx.restore();
+  }
+
+  // ── Render Loop ──
+  let lastTs = 0;
+  function render(ts) {
+    requestAnimationFrame(render);
+    if (ts - lastTs < 16) return; // cap ~60fps
+    lastTs = ts;
+    ctx.clearRect(0, 0, W, H);
+    // Use same bg color as site root
+    ctx.fillStyle = "#0c0d11";
+    ctx.fillRect(0, 0, W, H);
+    drawAurora(ts);
+    drawGrid();
+    for (const p of particles) { p.update(); p.draw(); }
+  }
+
+  // ── Init ──
+  resize();
+  initParticles();
+  requestAnimationFrame(render);
+
+  // Resize gracefully (debounced)
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      resize();
+      initParticles();
+    }, 150);
+  });
+})();
+
+// =============================================================
+// DRAGGABLE WHATSAPP BUTTON (PC Mouse & Mobile Touch Support)
+// =============================================================
+function initDraggableWhatsApp() {
+  const btn = document.querySelector(".whatsapp-btn");
+  if (!btn) return;
+
+  // Prevent default browser drag on links
+  btn.setAttribute("draggable", "false");
+  btn.addEventListener("dragstart", function (e) { e.preventDefault(); });
+
+  let isDragging = false;
+  let hasMoved = false;
+  let startX = 0, startY = 0;
+  let startLeft = 0, startTop = 0;
+
+  // Restore saved position if valid
+  const saved = localStorage.getItem("wa_btn_pos");
+  if (saved) {
+    try {
+      const pos = JSON.parse(saved);
+      if (typeof pos.x === "number" && typeof pos.y === "number") {
+        const maxX = window.innerWidth - (btn.offsetWidth || 52) - 10;
+        const maxY = window.innerHeight - (btn.offsetHeight || 52) - 10;
+        const posX = Math.max(10, Math.min(maxX, pos.x));
+        const posY = Math.max(10, Math.min(maxY, pos.y));
+        btn.style.left = posX + "px";
+        btn.style.top = posY + "px";
+        btn.style.right = "auto";
+        btn.style.bottom = "auto";
+      }
+    } catch (e) {}
+  }
+
+  function onPointerDown(e) {
+    // Only primary button (left mouse click) or touch
+    if (e.button !== undefined && e.button !== 0) return;
+
+    isDragging = true;
+    hasMoved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = btn.getBoundingClientRect();
+    startLeft = rect.left;
+    startTop = rect.top;
+
+    btn.classList.add("dragging");
+    try {
+      btn.setPointerCapture(e.pointerId);
+    } catch (err) {}
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - startX;
+    const deltaY = e.clientY - startY;
+
+    // 5px threshold to separate drag from click
+    if (!hasMoved && (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5)) {
+      hasMoved = true;
+    }
+
+    if (hasMoved) {
+      const btnW = btn.offsetWidth || 52;
+      const btnH = btn.offsetHeight || 52;
+      const minX = 8;
+      const maxX = window.innerWidth - btnW - 8;
+      const minY = 8;
+      const maxY = window.innerHeight - btnH - 8;
+
+      let targetX = startLeft + deltaX;
+      let targetY = startTop + deltaY;
+
+      targetX = Math.max(minX, Math.min(maxX, targetX));
+      targetY = Math.max(minY, Math.min(maxY, targetY));
+
+      btn.style.left = targetX + "px";
+      btn.style.top = targetY + "px";
+      btn.style.right = "auto";
+      btn.style.bottom = "auto";
+    }
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    btn.classList.remove("dragging");
+
+    try {
+      btn.releasePointerCapture(e.pointerId);
+    } catch (err) {}
+
+    if (hasMoved) {
+      // Save position
+      const rect = btn.getBoundingClientRect();
+      try {
+        localStorage.setItem("wa_btn_pos", JSON.stringify({ x: rect.left, y: rect.top }));
+      } catch (err) {}
+
+      // Suppress opening WhatsApp link after drag
+      const suppress = function (ev) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      };
+      btn.addEventListener("click", suppress, { capture: true, once: true });
+      setTimeout(function () {
+        hasMoved = false;
+      }, 100);
+    }
+  }
+
+  btn.addEventListener("pointerdown", onPointerDown);
+
+  // pointermove must be non-passive so we can cancel page scroll during drag
+  window.addEventListener("pointermove", function (e) {
+    if (isDragging) {
+      onPointerMove(e);
+    }
+  });
+
+  window.addEventListener("pointerup", onPointerUp);
+  window.addEventListener("pointercancel", onPointerUp);
+
+  // Prevent page from scrolling under the finger while dragging on mobile
+  btn.addEventListener("touchmove", function (e) {
+    if (isDragging) e.preventDefault();
+  }, { passive: false });
+
+  // Keep inside viewport on window resize / orientation change
+  window.addEventListener("resize", function () {
+    if (btn.style.left && btn.style.left !== "auto") {
+      const rect = btn.getBoundingClientRect();
+      const maxX = window.innerWidth - (btn.offsetWidth || 52) - 8;
+      const maxY = window.innerHeight - (btn.offsetHeight || 52) - 8;
+      if (rect.left > maxX || rect.top > maxY) {
+        btn.style.left = Math.max(8, Math.min(maxX, rect.left)) + "px";
+        btn.style.top = Math.max(8, Math.min(maxY, rect.top)) + "px";
+      }
+    }
+  });
+}
+
+// Run when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initDraggableWhatsApp);
+} else {
+  initDraggableWhatsApp();
+}
