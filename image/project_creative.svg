@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="creativeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e1014" />
+      <stop offset="50%" stop-color="#181a20" />
+      <stop offset="100%" stop-color="#0a0b0d" />
+    </linearGradient>
+    <linearGradient id="neonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8ff4f" />
+      <stop offset="100%" stop-color="#a3e635" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#creativeBg)"/>
+
+  <!-- Geometric Grid & Wireframes -->
+  <g stroke="#ffffff" stroke-opacity="0.05" stroke-width="1.5">
+    <line x1="120" y1="0" x2="120" y2="675"/>
+    <line x1="360" y1="0" x2="360" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="840" y1="0" x2="840" y2="675"/>
+    <line x1="1080" y1="0" x2="1080" y2="675"/>
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+  </g>
+
+  <!-- Dramatic Editorial Poster Frames -->
+  <!-- Poster 1: Dark Minimal Typographic -->
+  <g transform="translate(140, 75)">
+    <rect width="280" height="420" rx="4" fill="#14171d" stroke="#2a303c" stroke-width="1.5"/>
+    <!-- Neon Accent Tag -->
+    <rect x="25" y="30" width="45" height="18" rx="2" fill="#d8ff4f"/>
+    <text x="47" y="43" fill="#111" font-family="'Manrope', sans-serif" font-size="9" font-weight="900" text-anchor="middle">ISSUE 01</text>
+    <text x="25" y="110" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="34" font-weight="900" letter-spacing="-1.5">FUTURE<br/>OF FORM</text>
+    <circle cx="140" cy="245" r="55" fill="none" stroke="#d8ff4f" stroke-width="2.5" stroke-dasharray="6,4"/>
+    <circle cx="140" cy="245" r="28" fill="#d8ff4f" opacity="0.85"/>
+    <text x="25" y="375" fill="#8892b0" font-family="'DM Sans', sans-serif" font-size="10" font-weight="600">DIRECTION / ART &amp; IDENTITY</text>
+    <text x="25" y="395" fill="#525d73" font-family="'DM Sans', sans-serif" font-size="9">CURATED BY RIFAT HOSSAIN</text>
+  </g>
+
+  <!-- Poster 2: High Contrast Neon Poster (Hero Focus) -->
+  <g transform="translate(460, 50)">
+    <rect width="320" height="470" rx="6" fill="#111317" stroke="#363e4f" stroke-width="2"/>
+    <!-- Diagonal Graphic Stripes -->
+    <path d="M 0 0 L 140 0 L 0 140 Z" fill="#d8ff4f"/>
+    <text x="35" y="45" fill="#111" font-family="'Manrope', sans-serif" font-size="12" font-weight="900">2026</text>
+    <text x="35" y="135" fill="#ffffff" font-family="'Manrope', sans-serif" font-size="44" font-weight="900" letter-spacing="-2">IMPACT<br/><tspan fill="#d8ff4f">STUDIO</tspan></text>
+    <line x1="35" y1="210" x2="285" y2="210" stroke="#333b4b" stroke-width="2"/>
+    <!-- Abstract 3D Cube / Isometric Wireframe -->
+    <polygon points="160,250 240,290 160,330 80,290" fill="#1a1e27" stroke="#d8ff4f" stroke-width="2"/>
+    <polygon points="80,290 160,330 160,400 80,360" fill="#151820" stroke="#d8ff4f" stroke-width="2"/>
+    <polygon points="240,290 160,330 160,400 240,360" fill="#202532" stroke="#d8ff4f" stroke-width="2"/>
+    <text x="35" y="440" fill="#a0aec0" font-family="'DM Sans', sans-serif" font-size="11" font-weight="700">EXPERIMENTAL ART &amp; CONCEPTS</text>
+  </g>
+
+  <!-- Poster 3: Monochromatic Clean Poster -->
+  <g transform="translate(820, 95)">
+    <rect width="250" height="380" rx="4" fill="#14171d" stroke="#2a303c" stroke-width="1.5"/>
+    <text x="25" y="55" fill="#d8ff4f" font-family="'DM Sans', sans-serif" font-size="11" font-weight="800">TYPOGRAPHY</text>
+    <text x="25" y="125" fill="#ffffff" font-family="'Manrope', sans-serif" font-size="32" font-weight="800" letter-spacing="-1">SPACE &amp;<br/>RHYTHM</text>
+    <rect x="25" y="195" width="200" height="6" fill="#2d3748"/>
+    <rect x="25" y="195" width="130" height="6" fill="#d8ff4f"/>
+    <rect x="25" y="215" width="200" height="6" fill="#2d3748"/>
+    <rect x="25" y="215" width="80" height="6" fill="#ffffff"/>
+    <text x="25" y="340" fill="#718096" font-family="'DM Sans', sans-serif" font-size="10">VISUAL HIERARCHY SYSTEM</text>
+  </g>
+
+  <!-- Bottom Brand Ribbon -->
+  <g transform="translate(140, 570)">
+    <rect width="930" height="65" rx="8" fill="#11141a" stroke="#252c3a" stroke-width="1"/>
+    <text x="35" y="38" fill="#d8ff4f" font-family="'Manrope', sans-serif" font-size="16" font-weight="800">CREATIVE DIRECTION</text>
+    <text x="260" y="38" fill="#718096" font-family="'DM Sans', sans-serif" font-size="13">• BRAND STRATEGY</text>
+    <text x="440" y="38" fill="#718096" font-family="'DM Sans', sans-serif" font-size="13">• EDITORIAL DESIGN</text>
+    <text x="640" y="38" fill="#718096" font-family="'DM Sans', sans-serif" font-size="13">• ART EXHIBITION</text>
+    <text x="840" y="38" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="13" font-weight="700">RIFAT.DESIGN ↗</text>
+  </g>
+</svg>

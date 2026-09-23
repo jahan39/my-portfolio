@@ -1,256 +1,551 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Rifat Hossain — Graphic Designer & Web Developer">
-  <title>Rifat Hossain | Portfolio</title>
+  <meta name="description"
+    content="Rifat Hossain — Graphic Designer & Web Developer crafting modern branding, high-impact digital design, and responsive web experiences.">
+  <title>Rifat Hossain | Graphic Designer & Web Developer</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rifat Hossain | Graphic Designer & Web Developer">
+  <meta property="og:description"
+    content="Graphic Designer & Web Developer creating clean, memorable, and high-impact digital experiences.">
+  <meta property="og:image" content="image/Rifat.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rifat Hossain | Graphic Designer & Web Developer">
+  <meta name="twitter:description"
+    content="Graphic Designer & Web Developer creating clean, memorable, and high-impact digital experiences.">
+  <meta name="twitter:image" content="image/Rifat.png">
 </head>
+
 <body>
+  <!-- Scroll Progress Indicator -->
+  <div id="progress-bar"></div>
 
-<header class="header">
-  <div class="container nav">
-    <a href="#home" class="logo">R.<b> RIFAT</b></a>
-    <nav class="menu">
-      <a href="#Home">Home</a>
-      <a href="About.html" target="_blank">About</a>
-      <a href="Services.html"target="_blank">Services</a>
-      <a href="Portfolio.html"target="_blank">Portfolio</a>
-      <a href="Contact.html"target="_blank">Contact</a>
-    </nav>
-    <a href="#contact" class="nav-btn">Let's Talk <span>↗</span></a>
+  <!-- Header & Navigation -->
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="logo">R.<b> RIFAT</b></a>
+      <nav class="menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#contact" class="nav-btn">Let's Talk <span>↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content" data-animate data-delay="100">
+          <p class="eyebrow"><span class="pulse-dot"></span> AVAILABLE FOR FREELANCE WORK</p>
+          <h1>Designing ideas<br>into <em>impact.</em></h1>
+          <p class="hero-text">
+            I'm <strong>Rifat Hossain</strong>, a passionate <span id="typing-text">Graphic Designer</span><span
+              class="typing-cursor"></span>
+            creating clean, memorable, and high-quality digital experiences.
+          </p>
+          <div class="hero-actions">
+            <a href="#portfolio" class="btn primary">View My Work <span>↗</span></a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+            <a href="cv/Rifat-CV.pdf" download="Rifat-CV.pdf" class="btn outline">Download CV ↓</a>
+          </div>
+          <div class="stats">
+            <div><strong>50+</strong><small>Projects Completed</small></div>
+            <div><strong>30+</strong><small>Happy Clients</small></div>
+            <div><strong>2+</strong><small>Years Experience</small></div>
+          </div>
+        </div>
+
+        <div class="hero-art" data-animate="fade-right" data-delay="300">
+          <div class="art-box">
+            <div class="art-grid"></div>
+            <img src="image/Rifat.png" alt="Rifat Hossain - Graphic Designer & Web Developer" class="profile-photo"
+              loading="eager">
+            <p>CREATIVE<br>PORTFOLIO</p>
+            <i class="shape one"></i><i class="shape two"></i>
+          </div>
+          <div class="float-card one">GRAPHIC<br><b>DESIGNER</b></div>
+          <div class="float-card two">WEB<br><b>DEVELOPER</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" data-animate id="about">
+      <div class="container split">
+        <div>
+          <p class="label">— ABOUT ME</p>
+          <h2>Creative thinking.<br><em>Purposeful design.</em></h2>
+        </div>
+        <div class="copy">
+          <p>
+            I create modern visual identities and digital experiences that are simple, useful, and memorable.
+          </p>
+          <p>
+            My approach combines strong graphic design fundamentals with practical, clean front-end web development
+            skills. From crafting a cohesive brand identity system to developing a pixel-perfect, responsive website, I
+            pay meticulous attention to every detail.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <span class="check-icon">✓</span>
+              <div>
+                <strong>Brand Strategy & Identity</strong>
+                <p>Distinctive logos, typography systems, and style guidelines.</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+              <span class="check-icon">✓</span>
+              <div>
+                <strong>Modern Responsive Web</strong>
+                <p>Fast, lightweight, mobile-first websites with clean structure.</p>
+              </div>
+            </div>
+          </div>
+          <a class="text-link" href="#contact">Let's work together <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS & TECH STACK TICKER -->
+    <section class="section tools-section" data-animate>
+      <div class="container">
+        <p class="label text-center">— TOOLS &amp; TECHNOLOGIES</p>
+        <h3 class="tools-heading text-center">My Creative &amp; Technical Stack</h3>
+
+        <div class="tools-grid">
+          <div class="tool-card">
+            <span class="tool-icon">🎨</span>
+            <strong>Adobe Photoshop</strong>
+            <small>Photo Manipulation &amp; Banners</small>
+          </div>
+          <div class="tool-card">
+            <span class="tool-icon">✒️</span>
+            <strong>Adobe Illustrator</strong>
+            <small>Vector Art &amp; Logo Systems</small>
+          </div>
+          <div class="tool-card">
+            <span class="tool-icon">📐</span>
+            <strong>Figma</strong>
+            <small>UI/UX &amp; Prototyping</small>
+          </div>
+          <div class="tool-card">
+            <span class="tool-icon">🌐</span>
+            <strong>HTML5 &amp; CSS3</strong>
+            <small>Semantic, Responsive Layouts</small>
+          </div>
+          <div class="tool-card">
+            <span class="tool-icon">⚡</span>
+            <strong>JavaScript (ES6+)</strong>
+            <small>Interactivity &amp; Micro-animations</small>
+          </div>
+          <div class="tool-card">
+            <span class="tool-icon">🚀</span>
+            <strong>Git &amp; GitHub</strong>
+            <small>Version Control &amp; Deployment</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills" data-animate>
+      <div class="container">
+        <p class="label">— SKILLS</p>
+        <div class="skill-grid">
+          <article data-animate data-delay="0">
+            <span>01</span>
+            <h3>Brand Identity</h3>
+            <p>Logo systems, brand guidelines, color palettes, and typographic identity.</p>
+          </article>
+          <article data-animate data-delay="100">
+            <span>02</span>
+            <h3>Graphic Design</h3>
+            <p>High-converting social media posts, posters, marketing collateral, and ads.</p>
+          </article>
+          <article data-animate data-delay="200">
+            <span>03</span>
+            <h3>Web Development</h3>
+            <p>Clean, high-performance responsive websites with modern HTML, CSS &amp; JavaScript.</p>
+          </article>
+          <article data-animate data-delay="300">
+            <span>04</span>
+            <h3>Creative Workflow</h3>
+            <p>End-to-end design lifecycle from research, sketching, and testing to final deliverables.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" data-animate id="services">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="label">— SERVICES</p>
+            <h2>What I can do<br><em>for your brand.</em></h2>
+          </div>
+          <p class="intro">Tailored creative solutions designed to make your business stand out, engage audiences, and
+            drive results.</p>
+        </div>
+        <div class="service-list">
+          <article data-animate data-delay="0" class="service-item" data-service-title="Logo & Branding">
+            <span>01</span>
+            <div>
+              <h3>Logo &amp; Branding</h3>
+              <p>Distinctive identities, scalable logo marks, brand guides, and cohesive visual language.</p>
+            </div>
+            <a href="#contact" class="service-arrow" title="Inquire about Logo & Branding"
+              aria-label="Inquire about Logo & Branding">↗</a>
+          </article>
+          <article data-animate data-delay="100" class="service-item" data-service-title="Social Media Design">
+            <span>02</span>
+            <div>
+              <h3>Social Media Design</h3>
+              <p>Eye-catching campaign templates, promotional banners, carousels, and engaging visuals.</p>
+            </div>
+            <a href="#contact" class="service-arrow" title="Inquire about Social Media Design"
+              aria-label="Inquire about Social Media Design">↗</a>
+          </article>
+          <article data-animate data-delay="200" class="service-item" data-service-title="Web Design & Development">
+            <span>03</span>
+            <div>
+              <h3>Web Design &amp; Development</h3>
+              <p>Modern, responsive, mobile-first websites crafted for speed, usability, and visual delight.</p>
+            </div>
+            <a href="#contact" class="service-arrow" title="Inquire about Web Design & Development"
+              aria-label="Inquire about Web Design & Development">↗</a>
+          </article>
+          <article data-animate data-delay="300" class="service-item" data-service-title="Print & Marketing Design">
+            <span>04</span>
+            <div>
+              <h3>Print &amp; Marketing Design</h3>
+              <p>Professional business cards, flyers, posters, brochures, and print-ready presentation kits.</p>
+            </div>
+            <a href="#contact" class="service-arrow" title="Inquire about Print & Marketing Design"
+              aria-label="Inquire about Print & Marketing Design">↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="section" data-animate id="portfolio">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="label">— SELECTED WORK</p>
+            <h2>A few things<br><em>I've created.</em></h2>
+          </div>
+          <p class="intro">Explore a curated selection of my graphic design, branding, and web development projects.</p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="portfolio-filters">
+          <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+          <button type="button" class="filter-btn" data-filter="brand">Brand Identity</button>
+          <button type="button" class="filter-btn" data-filter="graphic">Graphic Design</button>
+          <button type="button" class="filter-btn" data-filter="web">Web Development</button>
+        </div>
+
+        <div class="projects-grid" id="projects-container">
+          <!-- Project 1: Brand Identity -->
+          <article class="project-card" data-category="brand" data-project-id="p1">
+            <div class="project-art">
+              <img src="image/project_brand.jpg" alt="AURA Brand Identity System" loading="lazy">
+              <div class="project-overlay">
+                <span class="preview-btn">VIEW DETAILS ↗</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">Branding</span>
+                <span class="tag">Stationery</span>
+              </div>
+              <h3>AURA Visual Identity Suite</h3>
+              <p>Comprehensive logo design, luxury stationery suite, and packaging guideline.</p>
+            </div>
+          </article>
+
+          <!-- Project 2: Social Media Campaign -->
+          <article class="project-card" data-category="graphic" data-project-id="p2">
+            <div class="project-art">
+              <img src="image/project_social.jpg" alt="Digital Growth Social Media Campaign" loading="lazy">
+              <div class="project-overlay">
+                <span class="preview-btn">VIEW DETAILS ↗</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">Social Media</span>
+                <span class="tag">Digital Marketing</span>
+              </div>
+              <h3>Digital Growth Campaign</h3>
+              <p>High-converting social graphics, promotional carousels, and modern layout series.</p>
+            </div>
+          </article>
+
+          <!-- Project 3: Web Development -->
+          <article class="project-card" data-category="web" data-project-id="p3">
+            <div class="project-art">
+              <img src="image/project_web.svg" alt="SaaS Analytics Dashboard UI & Web App" loading="lazy">
+              <div class="project-overlay">
+                <span class="preview-btn">VIEW DETAILS ↗</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">Web App</span>
+                <span class="tag">HTML &amp; CSS</span>
+              </div>
+              <h3>Analytics SaaS Platform</h3>
+              <p>Responsive dark-mode dashboard interface with smooth interactive data visualization.</p>
+            </div>
+          </article>
+
+          <!-- Project 4: Creative Direction -->
+          <article class="project-card" data-category="graphic brand" data-project-id="p4">
+            <div class="project-art">
+              <img src="image/project_creative.svg" alt="Editorial Art Direction & Poster Design" loading="lazy">
+              <div class="project-overlay">
+                <span class="preview-btn">VIEW DETAILS ↗</span>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="project-tags">
+                <span class="tag">Art Direction</span>
+                <span class="tag">Poster Design</span>
+              </div>
+              <h3>Editorial Creative Direction</h3>
+              <p>Avant-garde typography, Swiss layout compositions, and futuristic print systems.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="section process" data-animate>
+      <div class="container">
+        <p class="label">— PROCESS</p>
+        <h2>Simple process.<br><em>Better results.</em></h2>
+        <div class="process-grid">
+          <article data-animate data-delay="0">
+            <span>01</span>
+            <h3>Discover</h3>
+            <p>Deep dive into your brand goals, target audience, and project specifications.</p>
+          </article>
+          <article data-animate data-delay="100">
+            <span>02</span>
+            <h3>Concept</h3>
+            <p>Brainstorming, moodboarding, and developing strategic creative directions.</p>
+          </article>
+          <article data-animate data-delay="200">
+            <span>03</span>
+            <h3>Create</h3>
+            <p>Translating approved concepts into refined visuals and clean, scalable code.</p>
+          </article>
+          <article data-animate data-delay="300">
+            <span>04</span>
+            <h3>Deliver</h3>
+            <p>Final testing, asset handover, production-ready files, and full launch support.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS / REVIEWS SECTION -->
+    <section class="section testimonials" data-animate id="testimonials">
+      <div class="container">
+        <div class="section-top">
+          <div>
+            <p class="label">— CLIENT REVIEWS</p>
+            <h2>What clients say<br><em>about my work.</em></h2>
+          </div>
+          <p class="intro">Real feedback from clients who trusted me with their visual branding and web development
+            projects.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Rifat delivered an extraordinary brand identity for our startup. His sense of aesthetics and typography
+              is top-tier. Highly recommended for any serious business!"
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">TF</div>
+              <div>
+                <strong>Tanvir Faisal</strong>
+                <small>Founder, Aura Media</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "Working with Rifat was seamless. He designed and coded our portfolio website exactly as envisioned—super
+              fast, responsive, and stunning on every device."
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">SK</div>
+              <div>
+                <strong>Shahriar Kabir</strong>
+                <small>Creative Producer</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p class="testimonial-text">
+              "The social media banners and marketing visuals Rifat designed skyrocketed our campaign engagement by over
+              40%. Great communication and quick turnaround!"
+            </p>
+            <div class="client-meta">
+              <div class="client-avatar">NH</div>
+              <div>
+                <strong>Nazmul Hasan</strong>
+                <small>Marketing Strategist</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact" data-animate id="contact">
+      <div class="container contact-box">
+        <div class="contact-info">
+          <p class="label">— CONTACT</p>
+          <h2>Have a project<br>in <em>mind?</em></h2>
+          <p>
+            Let's collaborate to turn your vision into an impactful digital experience.
+          </p>
+
+          <div class="contact-links">
+            <a href="mailto:rifatofficial001@gmail.com">
+              <span>EMAIL</span>
+              <strong>Email ↗</strong>
+            </a>
+            <a href="https://www.behance.net/" target="_blank" rel="noopener noreferrer">
+              <span>PORTFOLIO</span>
+              <strong>Behance ↗</strong>
+            </a>
+            <a href="https://www.linkedin.com/in/rifat-h0ssain" target="_blank" rel="noopener noreferrer">
+              <span>PROFESSIONAL</span>
+              <strong>LinkedIn ↗</strong>
+            </a>
+            <a href="https://www.facebook.com/share/1D5GWRHSAw" target="_blank" rel="noopener noreferrer">
+              <span>SOCIAL</span>
+              <strong>Facebook ↗</strong>
+            </a>
+            <a href="https://www.youtube.com/@reelgeniusbd" target="_blank" rel="noopener noreferrer">
+              <span>CHANNEL</span>
+              <strong>YouTube ↗</strong>
+            </a>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="e.g. John Doe" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required
+                autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="subject">Project Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What is your project about?" required>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="5"
+                placeholder="Tell me about your project goals, timeline, and requirements..." required></textarea>
+            </div>
+
+            <button type="submit" class="form-btn">
+              <span>Send Message</span>
+              <span class="btn-arrow">↗</span>
+            </button>
+
+            <div id="form-status" role="alert"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Details Lightbox Modal -->
+  <div class="project-modal" id="project-modal" aria-hidden="true" role="dialog">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-dialog">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+      <div class="modal-media">
+        <img id="modal-img" src="" alt="Project Preview">
+      </div>
+      <div class="modal-body">
+        <div class="modal-tags" id="modal-tags"></div>
+        <h3 id="modal-title">Project Title</h3>
+        <p id="modal-desc">Project Description</p>
+        <div class="modal-actions">
+          <a href="#contact" class="btn primary" id="modal-inquire-btn">Discuss Similar Project <span>↗</span></a>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
 
-<main>
-  <section class="hero" id="home">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <p class="eyebrow"><span></span> AVAILABLE FOR FREELANCE WORK</p>
-        <h1>Designing ideas<br>into <em>impact.</em></h1>
-        <p class="hero-text">
-          I'm <strong>Rifat Hossain</strong>, a Graphic Designer & Web Developer
-          creating clean, memorable and high-quality digital experiences.
-        </p>
-        <div class="hero-actions">
-          <a href="#portfolio" class="btn primary">View My Work <span>↗</span></a>
-          <a href="#contact" class="btn secondary">Contact Me</a>
-        </div>
-        <div class="stats">
-          <div><strong>50+</strong><small>Projects</small></div>
-          <div><strong>30+</strong><small>Clients</small></div>
-          <div><strong>2+</strong><small>Years Experience</small></div>
-        </div>
-      </div>
-
-      <div class="hero-art">
-        <div class="art-box">
-          <div class="art-grid"></div>
-          <!-- images/profile.jpg -->
-          <img src="image/Rifat.png" alt="Rifat Hossain" class="profile-photo">
-          <p>CREATIVE<br>PORTFOLIO</p>
-          <i class="shape one"></i><i class="shape two"></i>
-        </div>
-        <div class="float-card one">GRAPHIC<br><b>DESIGNER</b></div>
-        <div class="float-card two">WEB<br><b>DEVELOPER</b></div>
-      </div>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer">
+      <p>© 2026 Rifat Hossain. All rights reserved.</p>
+      <p>Designed &amp; Developed with precision by <strong>Rifat Hossain</strong></p>
     </div>
-  </section>
+  </footer>
 
-  <section class="section" id="about">
-    <div class="container split">
-      <div>
-        <p class="label">— ABOUT ME</p>
-        <h2>Creative thinking.<br><em>Purposeful design.</em></h2>
-      </div>
-      <div class="copy">
-        <p>I create modern visual identities and digital experiences that are simple, useful and memorable.</p>
-        <p>My approach combines strong design fundamentals with practical web development skills. From a logo to a complete website, I care about every detail.</p>
-        <a class="text-link" href="#contact">Let's work together <span>→</span></a>
-      </div>
-    </div>
-  </section>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="script.js"></script>
 
-  <section class="section skills">
-    <div class="container">
-      <p class="label">— SKILLS</p>
-      <div class="skill-grid">
-        <article><span>01</span><h3>Brand Identity</h3><p>Logo systems, visual identity and brand direction.</p></article>
-        <article><span>02</span><h3>Graphic Design</h3><p>Social media, posters, banners and marketing visuals.</p></article>
-        <article><span>03</span><h3>Web Development</h3><p>Clean, responsive websites with HTML and CSS.</p></article>
-        <article><span>04</span><h3>Adobe Creative</h3><p>Professional workflow with Illustrator and Photoshop.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="services">
-    <div class="container">
-      <div class="section-top">
-        <div><p class="label">— SERVICES</p><h2>What I can do<br><em>for your brand.</em></h2></div>
-        <p class="intro">Professional creative solutions built around your goals, audience and brand.</p>
-      </div>
-      <div class="service-list">
-        <article><span>01</span><div><h3>Logo & Branding</h3><p>Distinctive identities that make brands recognizable.</p></div><b>↗</b></article>
-        <article><span>02</span><div><h3>Social Media Design</h3><p>Eye-catching content designed for engagement.</p></div><b>↗</b></article>
-        <article><span>03</span><div><h3>Web Design & Development</h3><p>Modern responsive websites with clean structure.</p></div><b>↗</b></article>
-        <article><span>04</span><div><h3>Print & Marketing Design</h3><p>Professional posters, flyers and business materials.</p></div><b>↗</b></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="portfolio">
-    <div class="container">
-      <div class="section-top">
-        <div><p class="label">— SELECTED WORK</p><h2>A few things<br><em>I've created.</em></h2></div>
-        <p class="intro">Replace the demo cards with your real projects later.</p>
-      </div>
-      <div class="projects">
-        <article class="project large">
-          <div class="project-art art1">
-            <!-- এখানে project1.jpg এর জায়গায় তোমার Brand Identity প্রজেক্টের ছবি বসাও -->
-            <img src="images/project1.jpg" alt="Brand Identity">
-          </div>
-          <h3>Brand Identity</h3>
-          <p>Logo & Visual System</p>
-        </article>
-        <article class="project">
-          <div class="project-art art2">
-            <img src="images/project2.jpg" alt="Social Media Campaign">
-          </div>
-          <h3>Social Media Campaign</h3>
-          <p>Digital Design</p>
-        </article>
-        <article class="project">
-          <div class="project-art art3">
-            <img src="images/project3.jpg" alt="Portfolio Website">
-          </div>
-          <h3>Portfolio Website</h3>
-          <p>Web Design & Development</p>
-        </article>
-        <article class="project wide">
-          <div class="project-art art4">
-            <img src="images/project4.jpg" alt="Creative Direction">
-          </div>
-          <h3>Creative Direction</h3>
-          <p>Art Direction & Graphic Design</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section process">
-    <div class="container">
-      <p class="label">— PROCESS</p>
-      <h2>Simple process.<br><em>Better results.</em></h2>
-      <div class="process-grid">
-        <article><span>01</span><h3>Discover</h3><p>Understand the goal, audience and requirements.</p></article>
-        <article><span>02</span><h3>Concept</h3><p>Develop a clear creative direction and ideas.</p></article>
-        <article><span>03</span><h3>Create</h3><p>Turn the selected direction into polished work.</p></article>
-        <article><span>04</span><h3>Deliver</h3><p>Provide organized, high-quality final files.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section contact" id="contact">
-  <div class="container contact-box">
-
-    <div class="contact-info">
-      <p class="label">— CONTACT</p>
-
-      <h2>Have a project<br>in <em>mind?</em></h2>
-
-      <p>
-        Let's turn your idea into something people remember.
-      </p>
-
-      <div class="contact-links">
-        <a href="mailto:rifatofficial001@email.com">EMAIL ↗</a>
-        <a href="#">Behance ↗</a>
-        <a href="https://www.linkedin.com/in/rifat-h0ssain" target="_blank">
-          LinkedIn ↗
-        </a>
-        <a href="https://www.facebook.com/share/1D5GWRHSAw" target="_blank">
-          Facebook ↗
-        </a>
-        <a href="https://www.youtube.com/@reelgeniusbd" target="_blank">
-          Youtube ↗
-        </a>
-      </div>
-    </div>
-
-    <!-- EmailJS Contact Form -->
-    <div class="contact-form">
-
-      <form id="contact-form">
-
-        <div class="form-group">
-          <label for="name">YOUR NAME</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="email">YOUR EMAIL</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Enter your email"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            placeholder="What is your project about?"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="6"
-            placeholder="Tell me about your project..."
-            required
-          ></textarea>
-        </div>
-
-        <button type="submit" class="form-btn">
-          Send Message <span>↗</span>
-        </button>
-
-        <p id="form-status"></p>
-
-      </form>
-
-    </div>
-
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer">
-    <p>© 2026 Rifat Hossain. All rights reserved.</p>
-    <p>Designed & Developed by <strong> Rifat Hossain</strong></p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script src="script.js"></script>
-
+  <!-- Floating Buttons -->
+  <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">↑</a>
+  <a href="https://api.whatsapp.com/send?phone=8801700000000&text=Hello%20Rifat%2C%20I%20would%20like%20to%20discuss%20a%20project!"
+    class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
 </body>
+
 </html>

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0e14" />
+      <stop offset="100%" stop-color="#141923" />
+    </linearGradient>
+    <linearGradient id="neonLime" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d8ff4f" />
+      <stop offset="100%" stop-color="#00f2fe" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d8ff4f" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#d8ff4f" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#181f2a" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#10151e" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000" flood-opacity="0.65"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle decorative grid -->
+  <g stroke="#ffffff" stroke-opacity="0.03" stroke-width="1">
+    <line x1="0" y1="100" x2="800" y2="100"/>
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="0" y1="500" x2="800" y2="500"/>
+    <line x1="160" y1="0" x2="160" y2="600"/>
+    <line x1="320" y1="0" x2="320" y2="600"/>
+    <line x1="480" y1="0" x2="480" y2="600"/>
+    <line x1="640" y1="0" x2="640" y2="600"/>
+  </g>
+
+  <!-- Laptop / Browser Container Mockup -->
+  <g filter="url(#shadow)">
+    <!-- Browser Window Frame -->
+    <rect x="70" y="55" width="660" height="490" rx="14" fill="#131720" stroke="#252c3d" stroke-width="1.5"/>
+    
+    <!-- Window Header -->
+    <rect x="70" y="55" width="660" height="46" rx="14" fill="#0d1117"/>
+    <!-- Window Controls -->
+    <circle cx="98" cy="78" r="6" fill="#ff5f56"/>
+    <circle cx="118" cy="78" r="6" fill="#ffbd2e"/>
+    <circle cx="138" cy="78" r="6" fill="#27c93f"/>
+    <!-- Search / URL Bar -->
+    <rect x="220" y="66" width="360" height="24" rx="6" fill="#1c2230" stroke="#2c364c" stroke-width="1"/>
+    <text x="360" y="82" fill="#718096" font-family="'DM Sans', sans-serif" font-size="11" text-anchor="middle">https://rifat-agency.dev/analytics</text>
+    
+    <!-- App Sidebar -->
+    <rect x="70" y="101" width="130" height="444" fill="#0f131a"/>
+    <line x1="200" y1="101" x2="200" y2="545" stroke="#212836" stroke-width="1"/>
+    
+    <!-- Sidebar Items -->
+    <rect x="85" y="125" width="100" height="28" rx="6" fill="#1d2638"/>
+    <circle cx="98" cy="139" r="4" fill="#d8ff4f"/>
+    <rect x="110" y="136" width="60" height="6" rx="3" fill="#d8ff4f"/>
+    
+    <rect x="85" y="165" width="100" height="28" rx="6" fill="transparent"/>
+    <circle cx="98" cy="179" r="4" fill="#4a5568"/>
+    <rect x="110" y="176" width="55" height="6" rx="3" fill="#4a5568"/>
+    
+    <rect x="85" y="205" width="100" height="28" rx="6" fill="transparent"/>
+    <circle cx="98" cy="219" r="4" fill="#4a5568"/>
+    <rect x="110" y="216" width="65" height="6" rx="3" fill="#4a5568"/>
+
+    <!-- Main Dashboard Area -->
+    <!-- Top Stats Row -->
+    <g transform="translate(225, 125)">
+      <!-- Stat Card 1 -->
+      <rect x="0" y="0" width="145" height="85" rx="10" fill="url(#cardGrad)" stroke="#222b3d" stroke-width="1"/>
+      <text x="16" y="26" fill="#8892b0" font-family="'DM Sans', sans-serif" font-size="10" font-weight="600">TOTAL REVENUE</text>
+      <text x="16" y="55" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="18" font-weight="800">$48,250</text>
+      <text x="16" y="73" fill="#d8ff4f" font-family="'DM Sans', sans-serif" font-size="10" font-weight="700">+24.8% ↑</text>
+
+      <!-- Stat Card 2 -->
+      <rect x="160" y="0" width="145" height="85" rx="10" fill="url(#cardGrad)" stroke="#222b3d" stroke-width="1"/>
+      <text x="176" y="26" fill="#8892b0" font-family="'DM Sans', sans-serif" font-size="10" font-weight="600">ACTIVE USERS</text>
+      <text x="176" y="55" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="18" font-weight="800">12,840</text>
+      <text x="176" y="73" fill="#00f2fe" font-family="'DM Sans', sans-serif" font-size="10" font-weight="700">+12.4% ↑</text>
+
+      <!-- Stat Card 3 -->
+      <rect x="320" y="0" width="155" height="85" rx="10" fill="url(#cardGrad)" stroke="#222b3d" stroke-width="1"/>
+      <text x="336" y="26" fill="#8892b0" font-family="'DM Sans', sans-serif" font-size="10" font-weight="600">CONVERSION</text>
+      <text x="336" y="55" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="18" font-weight="800">4.92%</text>
+      <text x="336" y="73" fill="#d8ff4f" font-family="'DM Sans', sans-serif" font-size="10" font-weight="700">OPTIMIZED ★</text>
+    </g>
+
+    <!-- Main Chart Section -->
+    <g transform="translate(225, 230)">
+      <rect x="0" y="0" width="475" height="185" rx="10" fill="url(#cardGrad)" stroke="#222b3d" stroke-width="1"/>
+      <text x="20" y="32" fill="#f5f4ef" font-family="'Manrope', sans-serif" font-size="14" font-weight="700">Performance Analytics</text>
+      <text x="20" y="48" fill="#718096" font-family="'DM Sans', sans-serif" font-size="10">Real-time user engagement metric</text>
+
+      <!-- Chart Grid Lines -->
+      <line x1="20" y1="80" x2="455" y2="80" stroke="#232d3f" stroke-dasharray="4,4"/>
+      <line x1="20" y1="120" x2="455" y2="120" stroke="#232d3f" stroke-dasharray="4,4"/>
+      <line x1="20" y1="160" x2="455" y2="160" stroke="#232d3f" stroke-dasharray="4,4"/>
+
+      <!-- Smooth Area Glow -->
+      <path d="M 25 155 Q 80 110 140 135 T 260 90 T 360 115 T 450 65 L 450 170 L 25 170 Z" fill="url(#accentGlow)"/>
+
+      <!-- Main Neon Chart Line -->
+      <path d="M 25 155 Q 80 110 140 135 T 260 90 T 360 115 T 450 65" fill="none" stroke="url(#neonLime)" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Chart Dots -->
+      <circle cx="260" cy="90" r="5" fill="#131720" stroke="#d8ff4f" stroke-width="3"/>
+      <circle cx="450" cy="65" r="5" fill="#131720" stroke="#00f2fe" stroke-width="3"/>
+    </g>
+
+    <!-- Code Preview Footer Strip -->
+    <g transform="translate(225, 435)">
+      <rect x="0" y="0" width="475" height="85" rx="8" fill="#090c10" stroke="#1f2633" stroke-width="1"/>
+      <text x="20" y="28" fill="#e6edf3" font-family="monospace" font-size="11">
+        <tspan fill="#ff7b72">const</tspan> <tspan fill="#79c0ff">portfolio</tspan> = <tspan fill="#d8ff4f">new</tspan> <tspan fill="#ffa657">WebExperience</tspan>({
+      </text>
+      <text x="35" y="48" fill="#e6edf3" font-family="monospace" font-size="11">
+        developer: <tspan fill="#a5d6ff">"Rifat Hossain"</tspan>, stack: [<tspan fill="#a5d6ff">"HTML5"</tspan>, <tspan fill="#a5d6ff">"CSS3"</tspan>, <tspan fill="#a5d6ff">"JS"</tspan>]
+      </text>
+      <text x="20" y="68" fill="#e6edf3" font-family="monospace" font-size="11">});</text>
+    </g>
+  </g>
+</svg>
