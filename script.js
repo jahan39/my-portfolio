@@ -50,6 +50,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateActiveNavLink() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const nearBottom =
+      window.innerHeight + scrollY >= document.documentElement.scrollHeight - 60;
+
+    // If near the bottom of the page, force-activate the last nav link
+    if (nearBottom) {
+      const lastSection = sections[sections.length - 1];
+      if (lastSection) {
+        navLinks.forEach(function (link) {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + lastSection.getAttribute("id")) {
+            link.classList.add("active");
+          }
+        });
+      }
+      return;
+    }
 
     sections.forEach(function (section) {
       const sectionHeight = section.offsetHeight;
@@ -183,9 +199,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "UI/UX Designer"
     ];
     let wordIndex = 0;
-    let charIndex = 0;
+    // Start as if first word is already typed — no glitch on load
+    let charIndex = words[0].length;
     let isDeleting = false;
-    let delay = 120;
+    let delay = 2200; // initial pause before first delete
+
+    // Set the text immediately so there's no blank flash
+    typingTarget.textContent = words[0];
 
     function type() {
       const current = words[wordIndex];
@@ -212,7 +232,8 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(type, delay);
     }
 
-    type();
+    // Delay the very first call so page finishes rendering first
+    setTimeout(type, 2200);
   }
 
   // =========================
@@ -232,15 +253,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const category = card.getAttribute("data-category") || "";
 
         if (filter === "all" || category.includes(filter)) {
+          // First remove hide so the element is in the DOM (display:flex/block)
           card.classList.remove("hide");
+          // Force style reset BEFORE the next paint
+          card.style.transition = "none";
           card.style.opacity = "0";
           card.style.transform = "translateY(15px)";
-          setTimeout(function () {
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-          }, 50);
+          // Then on the next frame, re-enable transition and animate in
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+              card.style.transition = "";
+              card.style.opacity = "1";
+              card.style.transform = "translateY(0)";
+            });
+          });
         } else {
           card.classList.add("hide");
+          card.style.opacity = "";
+          card.style.transform = "";
         }
       });
     });
@@ -318,6 +348,13 @@ document.addEventListener("DOMContentLoaded", function () {
     card.addEventListener("click", function () {
       openProjectModal(card);
     });
+    // Keyboard accessibility: Enter or Space opens the modal
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openProjectModal(card);
+      }
+    });
   });
 
   if (modalClose) {
@@ -332,6 +369,16 @@ document.addEventListener("DOMContentLoaded", function () {
       const subjectInput = document.getElementById("subject");
       if (subjectInput && modalTitle) {
         subjectInput.value = "Inquiry regarding " + modalTitle.textContent;
+      }
+      // Scroll to contact section after modal closes
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        setTimeout(function () {
+          contactSection.scrollIntoView({ behavior: "smooth" });
+          setTimeout(function () {
+            if (subjectInput) subjectInput.focus();
+          }, 600);
+        }, 350); // wait for modal close animation
       }
     });
   }
@@ -430,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function resize() {
     const section = canvas.parentElement;
-    W = canvas.width  = section.offsetWidth;
+    W = canvas.width = section.offsetWidth;
     H = canvas.height = section.offsetHeight;
   }
 
@@ -438,12 +485,12 @@ document.addEventListener("DOMContentLoaded", function () {
   class Particle {
     constructor() { this.reset(true); }
     reset(init) {
-      this.x     = Math.random() * W;
-      this.y     = init ? Math.random() * H : H + 10;
-      this.r     = Math.random() * 1.5 + 0.4;
+      this.x = Math.random() * W;
+      this.y = init ? Math.random() * H : H + 10;
+      this.r = Math.random() * 1.5 + 0.4;
       this.speed = Math.random() * 0.45 + 0.15;
       this.alpha = Math.random() * 0.55 + 0.2;
-      this.hue   = Math.random() < 0.6 ? 74 : 190; // lime-yellow or cyan
+      this.hue = Math.random() < 0.6 ? 74 : 190; // lime-yellow or cyan
       this.drift = (Math.random() - 0.5) * 0.35;
     }
     update() {
@@ -454,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function () {
     draw() {
       ctx.save();
       ctx.globalAlpha = this.alpha;
-      ctx.fillStyle   = `hsl(${this.hue}, 100%, 70%)`;
+      ctx.fillStyle = `hsl(${this.hue}, 100%, 70%)`;
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
       ctx.fill();
@@ -466,28 +513,28 @@ document.addEventListener("DOMContentLoaded", function () {
     particles = [];
     // Mobile: fewer particles to keep 60fps
     const count = isMobile()
-      ? Math.min(60,  Math.floor((W * H) / 14000))
+      ? Math.min(60, Math.floor((W * H) / 14000))
       : Math.min(180, Math.floor((W * H) / 7000));
     for (let i = 0; i < count; i++) particles.push(new Particle());
   }
 
   // ── Aurora Orbs ──
   const orbs = [
-    { ox: 0.15, oy: 0.35, r: 0.55, hue: 74,  speed: 0.00022, phase: 0 },
+    { ox: 0.15, oy: 0.35, r: 0.55, hue: 74, speed: 0.00022, phase: 0 },
     { ox: 0.78, oy: 0.55, r: 0.50, hue: 190, speed: 0.00018, phase: 2 },
-    { ox: 0.50, oy: 0.18, r: 0.44, hue: 74,  speed: 0.00015, phase: 4 },
+    { ox: 0.50, oy: 0.18, r: 0.44, hue: 74, speed: 0.00015, phase: 4 },
     { ox: 0.88, oy: 0.22, r: 0.36, hue: 265, speed: 0.00020, phase: 1 },
   ];
 
   function drawAurora(ts) {
     for (const o of orbs) {
-      const cx  = (o.ox + Math.sin(ts * o.speed + o.phase) * 0.13) * W;
-      const cy  = (o.oy + Math.cos(ts * o.speed * 1.3 + o.phase) * 0.10) * H;
+      const cx = (o.ox + Math.sin(ts * o.speed + o.phase) * 0.13) * W;
+      const cy = (o.oy + Math.cos(ts * o.speed * 1.3 + o.phase) * 0.10) * H;
       const rad = o.r * Math.min(W, H);
-      const g   = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-      g.addColorStop(0,   `hsla(${o.hue}, 100%, 60%, 0.40)`);
+      const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+      g.addColorStop(0, `hsla(${o.hue}, 100%, 60%, 0.40)`);
       g.addColorStop(0.5, `hsla(${o.hue},  95%, 50%, 0.14)`);
-      g.addColorStop(1,   `hsla(${o.hue},  80%, 35%, 0)`);
+      g.addColorStop(1, `hsla(${o.hue},  80%, 35%, 0)`);
       ctx.fillStyle = g;
       ctx.beginPath();
       ctx.ellipse(cx, cy, rad, rad * 0.65, ts * 0.0001, 0, Math.PI * 2);
@@ -498,7 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function drawGrid() {
     ctx.save();
     ctx.strokeStyle = "rgba(255,255,255,0.045)";
-    ctx.lineWidth   = 1;
+    ctx.lineWidth = 1;
     const step = isMobile() ? 60 : 80;
     for (let x = 0; x <= W; x += step) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
@@ -571,7 +618,7 @@ function initDraggableWhatsApp() {
         btn.style.right = "auto";
         btn.style.bottom = "auto";
       }
-    } catch (e) {}
+    } catch (e) { }
   }
 
   function onPointerDown(e) {
@@ -590,7 +637,7 @@ function initDraggableWhatsApp() {
     btn.classList.add("dragging");
     try {
       btn.setPointerCapture(e.pointerId);
-    } catch (err) {}
+    } catch (err) { }
   }
 
   function onPointerMove(e) {
@@ -632,14 +679,14 @@ function initDraggableWhatsApp() {
 
     try {
       btn.releasePointerCapture(e.pointerId);
-    } catch (err) {}
+    } catch (err) { }
 
     if (hasMoved) {
       // Save position
       const rect = btn.getBoundingClientRect();
       try {
         localStorage.setItem("wa_btn_pos", JSON.stringify({ x: rect.left, y: rect.top }));
-      } catch (err) {}
+      } catch (err) { }
 
       // Suppress opening WhatsApp link after drag
       const suppress = function (ev) {
